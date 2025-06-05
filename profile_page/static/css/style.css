@@ -1,0 +1,231 @@
+/* Reset default browser styles for consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base body styles */
+body {
+  background: white;
+  color: #111;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER SECTION ===== */
+header {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo styling */
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+.logo .dot {
+  color: #f44336;
+}
+
+/* Nav container */
+nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Horizontal nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 85px;
+}
+
+/* Nav links styling */
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #f44336;
+}
+
+/* Language switcher horizontal */
+.lang {
+  display: flex;
+  gap: 8px;
+  border-left: 1px solid #888;
+  padding-left: 15px;
+}
+
+.lang a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.lang a.active {
+  font-weight: bold;
+  color: #f44336;
+}
+
+/* Email button */
+.email-button {
+  background: #f44336;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.email-button:hover {
+  background: #d32f2f;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 60px 20px;
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute content vertically */
+}
+
+/* Intro text above hero image */
+.intro {
+  font-size: 1.2rem;
+  z-index: 2;
+  position: relative;
+  margin-top: 40px; /* Space below intro text */
+}
+
+/* ===== BIG BACKGROUND TITLE TEXT ===== */
+.background-title {
+  position: absolute;
+  top: 10%; /* Positioning in top center */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none; /* So it doesn't block interaction */
+}
+
+/* Styling the large title */
+.background-title h1 {
+  font-size: 10rem;
+  font-weight: 900;
+  opacity: 1; /* Fully visible now */
+  line-height: 0.9;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); /* Adds a shadow for depth */
+}
+
+/* Solid black title version */
+.solid {
+  color: black;
+}
+
+/* Outline version using stroke */
+.outline {
+  color: white;
+  -webkit-text-stroke: 2px black; /* Outline effect */
+}
+
+/* ===== HERO IMAGE SECTION ===== */
+.hero-img {
+  margin-bottom: -500px;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* Hero image styling */
+.hero-img img {
+  width: 100%;
+  max-width: 800px;
+  display: block;
+  border-radius: 20px;
+}
+
+/* Fade effect at the bottom */
+.hero-img::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  max-width: 800px;
+  height: 100px; /* Height of the fade effect */
+  background: linear-gradient(to bottom, transparent, white); /* Adjust white to your page bg */
+  border-radius: 0 0 20px 20px; /* Match image border radius at bottom */
+  pointer-events: none; /* Allow clicking through */
+}
+
+/* ===== BUTTONS ON IMAGE ===== */
+.hero-img .buttons {
+  position: absolute;
+   bottom: 70px; /*bottom adjustment */
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  z-index: 2;
+  transform: translateX(-50px); /* Adjust this value to move more or less to the left */
+}
+
+
+/* Styling both buttons */
+.hero-img .buttons button {
+  width: 160px; /* Fixed width to ensure equal size */
+  padding: 10px 0;
+  gap: 40px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Left button - solid */
+.hero-img .buttons button:not(.outline-btn) {
+  background: black;
+  color: white;
+}
+
+/* Right button - outline style */
+.hero-img .buttons .outline-btn {
+  background: white;
+  border: 2px solid black;
+  color: black;
+}
+
+
+/* ===== LOCATION SECTION ===== */
+.location {
+  margin-top: 10px;
+  color: #555;
+  font-size: 1rem; /* not h1 size */
+  font-weight: normal;
+  text-align: left;
+  position: relative;
+  left: 0;
+}
+
