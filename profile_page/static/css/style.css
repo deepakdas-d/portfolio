@@ -5,6 +5,24 @@
   box-sizing: border-box;
 }
 
+/* ===== PAGE TRANSITION EFFECTS ===== */
+/* Initial page load - starts invisible */
+body {
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+/* Page fully loaded - fade in */
+body.loaded {
+  opacity: 1;
+}
+
+/* Page unload - fade out */
+body.unloading {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
 /* Base body styles */
 body {
   background: white;
@@ -27,6 +45,15 @@ header {
   z-index: 100;
   font-family: 'Segoe UI', sans-serif;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  /* Header fade in animation */
+  transform: translateY(-20px);
+  animation: slideInFromTop 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes slideInFromTop {
+  to {
+    transform: translateY(0);
+  }
 }
 
 /* Logo styling */
@@ -107,6 +134,20 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Distribute content vertically */
+  /* Hero section fade in animation */
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 0.4s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Intro text above hero image */
@@ -115,6 +156,15 @@ nav {
   z-index: 2;
   position: relative;
   margin-top: 40px; /* Space below intro text */
+  /* Intro text animation */
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.6s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 /* ===== BIG BACKGROUND TITLE TEXT ===== */
@@ -125,6 +175,20 @@ nav {
   transform: translateX(-50%);
   z-index: 0;
   pointer-events: none; /* So it doesn't block interaction */
+  /* Background title animation */
+  opacity: 0;
+  animation: titleReveal 1.2s ease-out 0.3s forwards;
+}
+
+@keyframes titleReveal {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
 }
 
 /* Styling the large title */
@@ -154,6 +218,17 @@ nav {
   position: relative;
   display: flex;
   justify-content: center;
+  /* Hero image animation */
+  opacity: 0;
+  transform: translateY(40px);
+  animation: imageSlideIn 1s ease-out 0.8s forwards;
+}
+
+@keyframes imageSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Hero image styling */
@@ -162,6 +237,13 @@ nav {
   max-width: 800px;
   display: block;
   border-radius: 20px;
+  transition: transform 0.3s ease
+}
+
+/* Subtle hover effect on hero image */
+.hero-img img:hover {
+  transform: scale(1.02);
+  
 }
 
 /* Fade effect at the bottom */
@@ -189,8 +271,21 @@ nav {
   gap: 80px;
   z-index: 2;
   transform: translateX(-50px); /* Adjust this value to move more or less to the left */
+  /* Buttons animation */
+  opacity: 0;
+  animation: buttonsAppear 0.6s ease-out 1.2s forwards;
 }
 
+@keyframes buttonsAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-50px) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50px) translateY(0);
+  }
+}
 
 /* Styling both buttons */
 .hero-img .buttons button {
@@ -202,12 +297,23 @@ nav {
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Button hover effects */
+.hero-img .buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Left button - solid */
 .hero-img .buttons button:not(.outline-btn) {
   background: black;
   color: white;
+}
+
+.hero-img .buttons button:not(.outline-btn):hover {
+  background: #333;
 }
 
 /* Right button - outline style */
@@ -217,6 +323,10 @@ nav {
   color: black;
 }
 
+.hero-img .buttons .outline-btn:hover {
+  background: black;
+  color: white;
+}
 
 /* ===== LOCATION SECTION ===== */
 .location {
@@ -227,5 +337,47 @@ nav {
   text-align: left;
   position: relative;
   left: 0;
+  /* Location animation */
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out 1.4s forwards;
 }
 
+/* ===== SMOOTH SCROLL BEHAVIOR ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== PRELOADER (OPTIONAL) ===== */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.preloader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.preloader .spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #f44336;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
